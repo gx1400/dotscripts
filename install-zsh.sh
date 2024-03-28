@@ -1,27 +1,30 @@
 #!/bin/bash
 
-# Check if the script is being run with superuser privileges
-if [ "$(id -u)" != "0" ]; then
-    echo "This script requires superuser privileges to run."
-    echo "Please enter your password to continue."
-    # Prompt for password and run the script with sudo
-    sudo "$0" "$@"
-    exit $?
-fi
-
 # Perform apt update and apt upgrade with automatic 'yes' to prompts
 echo "Running apt update..."
-apt update -y
+sudo apt update -y
 echo "Running apt upgrade..."
-apt upgrade -y
+sudo apt upgrade -y
 
 # Install zsh, curl, wget, and git
 echo "Installing zsh, curl, wget, and git..."
-apt install -y zsh curl wget git
+sudo apt install -y zsh curl wget git
+
+# Drop out of superuser privileges
+echo "Dropping out of superuser privileges..."
+echo "Now continuing as $USER"
+echo "Current user:"
+whoami
+
+# From here, the script will continue executing as the regular user
 
 # Install Oh My Zsh from GitHub
 echo "Installing Oh My Zsh..."
-sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
+
+# Clone zsh-autosuggestions from GitHub
+echo "Cloning zsh-autosuggestions..."
+git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
 
 # Clone Powerlevel10k from GitHub
 echo "Cloning Powerlevel10k..."
