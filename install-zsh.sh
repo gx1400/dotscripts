@@ -38,6 +38,7 @@ chsh -s $(which zsh)
 cp .p10k.zsh ~
 cp .zshrc ~
 
+zsh
 source ~/.zshrc
 
 echo "Script completed successfully."
