@@ -34,4 +34,8 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zs
 echo "Changing default shell to zsh..."
 chsh -s $(which zsh)
 
+# Copy rc profiles
+cp .p10k.zsh ~
+cp .zshrc ~
+
 echo "Script completed successfully."
