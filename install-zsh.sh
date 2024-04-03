@@ -20,11 +20,11 @@ whoami
 
 # Install Oh My Zsh from GitHub
 echo "Installing Oh My Zsh..."
-sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
+sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 # Clone zsh-autosuggestions from GitHub
 echo "Cloning zsh-autosuggestions..."
-git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions.git $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 
 # Clone Powerlevel10k from GitHub
 echo "Cloning Powerlevel10k..."
